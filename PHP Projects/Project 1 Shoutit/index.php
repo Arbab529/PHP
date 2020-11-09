@@ -1,3 +1,8 @@
+<?php include 'database.php';?>
+<?php
+$query = "select * from shouts";
+$result = mysqli_query($con,$query);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,29 +15,29 @@
     <div class="container">
 
         <header>
-            <h1>SHOUT IT! Shout Box</h1>
+            <h1>Arbab Arain! Shout Box</h1>
         </header>
 
         <div id="shouts">
             <ul>
-                <li class="shout"><span>10:00 PM - </span>Arbab: Hello How Are You?</li>
-                <li class="shout"><span>10:00 PM - </span>Arbab: Hello How Are You?</li>
-                <li class="shout"><span>10:00 PM - </span>Arbab: Hello How Are You?</li>
-                <li class="shout"><span>10:00 PM - </span>Arbab: Hello How Are You?</li>
-                <li class="shout"><span>10:00 PM - </span>Arbab: Hello How Are You?</li>
-                <li class="shout"><span>10:00 PM - </span>Arbab: Hello How Are You?</li>
-                <li class="shout"><span>10:00 PM - </span>Arbab: Hello How Are You?</li>
-                <li class="shout"><span>10:00 PM - </span>Arbab: Hello How Are You?</li>
-                <li class="shout"><span>10:00 PM - </span>Arbab: Hello How Are You?</li>
+
+            <?php while( $row = mysqli_fetch_assoc($result)) : ?>
+                <li class="shout"><span><?php echo $row['time']?> - </span><strong><?php echo $row['name']?></strong>: <?php echo $row['message']?></li>
+            <?php endwhile;?>
             </ul>        
         </div>
 
         <div id="input">
-            <form action="process.php" method="post">
+        <?php if(isset($_GET['error'])) : ?>
+
+            <div class="error"> <?php echo $_GET['error'];?></div>
+
+        <?php endif;?>
+            <form action="process.php" method="POST">
                 <input type="text" name="name" id="name" placeholder="Enter Your Name">
-                <input type="text" name="name" id="msg" placeholder="Enter Your Message">
+                <input type="text" name="message" id="msg" placeholder="Enter Your Message">
                 <br>
-                <input type="submit" value="Send" name="submit" class="sbmt-btn">
+                <input type="submit" value="Send" name="sbmt" class="sbmt-btn">
             </form>
         </div>
 

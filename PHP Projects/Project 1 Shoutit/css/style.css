@@ -2,34 +2,35 @@
     margin: 0;
     padding: 0;
 }
-
+:root{
+    --primarycolor:#214252;
+    --secondarycolor: #f05454;
+    --fontcolor:#fff;
+}
 body{
-    background-color: #000046;
+    background-color:var(--primarycolor);
     width: 100%;
     height: 100vh;
-    
 
 }
 .container{
     width: 60%;
     min-height: 400px;
-    /* margin: 0 auto; */
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    background: #1CB5E0;
+    background: var(--secondarycolor);
 }
 header{
-    background-color: white;
-    color: #000046;
+    background-color: var(--fontcolor);
+    color:var(--primarycolor);
 }
 h1,#shouts,#input{
-     width: 90%;
+    width: 90%;
     margin: 0 auto;
 }
 h1{
-   
     padding: 20px 0;
 }
 #shouts{
@@ -41,12 +42,21 @@ h1{
 .shout{
     padding: 10px 0;
     border-bottom: 1px solid grey;
-    color: white;
+    color: var(--fontcolor);
 }
 span{
     font-weight: bold;
-    color: #000046;
+    color: var(--primarycolor);
     font-size: 21px;
+}
+.error{
+    background: red;
+    color: white;
+    width: 100%;
+    line-height: 30px;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-bottom: 30px;
 }
 input{
     width: 100%;
@@ -54,20 +64,17 @@ input{
 input[type="text"]{
     width: 45%;
     padding: 10px 2%;
-    /* box-sizing: border-box; */
     outline: none;
-
 }
 input[type="submit"]{
     margin: 30px 0;
     width: 100%;
     padding: 10px;
-    background: #000046;
+    background:var(--primarycolor);
     opacity: 0.7;
     cursor: pointer;
-    
     border: none;
-    color: white;
+    color: var(--fontcolor);
     outline: none;
     font-size: 24px;
     transition: 0.5s;
